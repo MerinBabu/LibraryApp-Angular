@@ -1,6 +1,6 @@
 # LibraryApp-Angular
 
-To run the application,
+To run the application, run the following from the root directory
 
 *cd BACKEND
 
