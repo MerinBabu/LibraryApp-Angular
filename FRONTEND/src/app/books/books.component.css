@@ -1,0 +1,31 @@
+.navbar {
+    height: 75px;
+}
+
+a {
+    font-size: 25px;
+    font-weight: bold;
+    color: antiquewhite !important;
+}
+
+h1 {
+    color: rgb(34, 40, 124);
+    text-align: left;
+    margin-top: 5%;
+}
+
+.container {
+    margin-top: 100px;
+}
+
+#sign-in {
+    text-align: center;
+}
+
+label {
+    color: black;
+}
+
+small {
+    color: black;
+}

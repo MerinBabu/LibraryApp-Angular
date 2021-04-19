@@ -1,0 +1,35 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:rgb(53, 61, 179);">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/home" *ngIf="_auth.loggedIn()">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/signup" *ngIf="!_auth.loggedIn()">Sign up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/login" *ngIf="!_auth.loggedIn()">Sign in</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/books" *ngIf="_auth.loggedIn()">Books</a>
+                </li>
+        
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/add-author" *ngIf="_auth.loggedIn()&& _auth.getToken() == 'admin'">Add Author</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/logout" *ngIf="_auth.loggedIn()" (click)="_auth.logoutUser()">Log out</a>
+                </li>
+
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<h1 *ngIf="_auth.loggedIn()&& _auth.getToken() == 'admin'">Administrator</h1>
