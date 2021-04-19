@@ -10,7 +10,8 @@ node app.js
 
 ng serve
 
-Admin credentials are:
+Admin credentials are (for use at the login section):
 
 username:admin@gmail.com
+
 password:123456
