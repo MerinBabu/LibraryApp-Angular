@@ -36,3 +36,7 @@
 </nav>
 
 <h1 *ngIf="_auth.loggedIn()&& _auth.getToken() == 'admin'">Administrator</h1>
+<h1 *ngIf="_auth.loggedIn()&&_auth.getToken() != 'admin'">User</h1>
+<br>
+<br>
+<h1 id="welcome">Get ready to explore!</h1>

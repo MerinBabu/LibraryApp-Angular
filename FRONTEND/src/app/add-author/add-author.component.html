@@ -1,1 +1,105 @@
-<p>add-author works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:rgb(53, 61, 179);">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/home" *ngIf="_auth.loggedIn()">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/signup" *ngIf="!_auth.loggedIn()">Sign up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/login" *ngIf="!_auth.loggedIn()">Sign in</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/books" *ngIf="_auth.loggedIn()">Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/authors" *ngIf="_auth.loggedIn()">Authors</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/add-book" *ngIf="_auth.loggedIn()&& _auth.getToken() == 'admin'">Add Book</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/logout" *ngIf="_auth.loggedIn()" (click)="_auth.logoutUser()">Log out</a>
+                </li>
+
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<h1 *ngIf="_auth.loggedIn()&& _auth.getToken() == 'admin'">Administrator</h1>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <div class="panel">
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-3">
+                            <div class="card-header">
+                                <h1 id="sign-in">Add Author</h1>
+                            </div>
+
+                            <div class="card-body">
+                                <form class="form-margin" [formGroup]="addAuthorForm" (ngSubmit)="addAuthor()">
+
+
+                                    <div class="form-group">
+                                        <label>Author Name<span class="text-danger">*</span></label>
+                                        <label for="error" id="errorcatno"></label>
+                                        <input type="text" class="form-control" id="authorName" name="authorName" formControlName="authorName" [(ngModel)]="newAuthor.authorName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <br>
+                                        <label>Best Book Name<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="bestbookName" name="bestbookName" formControlName="bestbookName" [(ngModel)]="newAuthor.bestbookName" required>
+                                        <label class="error" for="error" id="errorcatname"></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <br>
+                                        <label>Genre<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="genre" name="genre" formControlName="genre" [(ngModel)]="newAuthor.genre" required>
+                                        <label class="error" for="error" id="errorcatname"></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="image">Image link<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="image" name="image" formControlName="image" [(ngModel)]="newAuthor.image" required>
+
+                                    </div>
+
+
+
+                                    <button class="btn btn-primary btn-block btnsubmit" [disabled]="addAuthorForm.invalid">Add Author</button>
+
+                                    <br>
+                                    <br>
+
+                                </form>
+
+
+                            </div>
+                        </div>
+                        <div class="col-lg-4"></div>
+                    </div>
+
+                    <!-- /stories -->
+                </div>
+            </div>
+
+
+
+        </div>
+        <!--/col-12-->
+    </div>
+</div>

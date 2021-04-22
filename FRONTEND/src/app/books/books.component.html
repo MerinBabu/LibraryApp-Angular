@@ -34,3 +34,64 @@
 </nav>
 
 <h1 *ngIf="_auth.loggedIn()&& _auth.getToken() == 'admin'">Administrator</h1>
+
+<h1 id="welcome">Books</h1>
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <div class="panel">
+                <div class="panel-body">
+
+
+
+                    <!--/stories-->
+
+                    <div class="row" *ngFor="let book of books">
+                        <br>
+                        <div class="col-md-2 col-sm-3 text-center">
+                            <a class="story-title" href="#"><img alt="" src="{{book.image}} " style="width:100px;height:100px" class="img-circle"></a>
+                        </div>
+                        <div class="col-md-10 col-sm-9">
+                            <h3>
+                                {{book.bookName}}
+                            </h3>
+                            <div class="row">
+                                <div class="col-xs-9">
+                                    <h4><span class="label label-default">{{book.authorName}}</span></h4>
+                                    <h4>
+                                        <small style="font-family:courier,'new courier';" class="text-muted">{{book.genre}} • 
+                                                <a href=" " class="text-muted">Read More</a></small>
+                                    </h4>
+                                </div>
+                                <div class="col-xs-3"></div>
+                                <button type="button" class="btn btn-outline-danger btn-lg margin-right" *ngIf="_auth.loggedIn() && _auth.getToken() == 'admin'" [routerLink]="['/update-book', book._id]">Update</button>
+
+                                <button type=" button " class="btn btn-outline-danger btn-lg " *ngIf="_auth.loggedIn() && _auth.getToken() == 'admin'" (click)="deleteBook(book._id)">Delete</button>
+                            </div>
+                            <br><br>
+                        </div>
+                    </div>
+                    <hr>
+
+
+
+
+                    <!--/stories-->
+
+
+                    <a href="/" class="btn btn-primary pull-right btnNext">More <i class="glyphicon glyphicon-chevron-right"></i></a>
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+        <!--/col-12-->
+    </div>
+</div>

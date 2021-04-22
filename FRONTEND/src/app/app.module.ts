@@ -14,6 +14,10 @@ import { AuthorsComponent } from './authors/authors.component';
 import { AddAuthorComponent } from './add-author/add-author.component';
 import { AddBookComponent } from './add-book/add-book.component';
 import { HomeComponent } from './home/home.component';
+import { UpdateBookComponent } from './update-book/update-book.component';
+import { BookService } from './book.service';
+import { AuthorService } from './author.service';
+import { UpdateAuthorComponent } from './update-author/update-author.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,9 @@ import { HomeComponent } from './home/home.component';
     AuthorsComponent,
     AddAuthorComponent,
     AddBookComponent,
-    HomeComponent
+    HomeComponent,
+    UpdateBookComponent,
+    UpdateAuthorComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,9 @@ import { HomeComponent } from './home/home.component';
 
   ],
   providers: [
-    AuthService
+    AuthService,
+    BookService,
+    AuthorService
   ],
   bootstrap: [AppComponent]
 })

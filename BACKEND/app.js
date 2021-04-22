@@ -14,8 +14,24 @@ app.use(bodyparser.urlencoded({
 mongoose.connect('mongodb+srv://userone:userone@ictakfiles.vfcnk.mongodb.net/LibApp?retryWrites=true&w=majority')
 
 const userRouter = require('./routes/user');
+const bookRouter = require('./routes/book');
+const authorRouter = require('./routes/author');
+const addBookRouter = require('./routes/addBook');
+const addAuthorRouter = require('./routes/addAuthor');
+const updateBookRouter = require('./routes/updateBook');
+const deleteBookRouter = require('./routes/deleteBook');
+const updateAuthorRouter = require('./routes/updateAuthor');
+const deleteAuthorRouter = require('./routes/deleteAuthor');
 
 app.use('/auth', userRouter);
+app.use('/books', bookRouter);
+app.use('/authors', authorRouter);
+app.use('/addbook', addBookRouter);
+app.use('/addauthor', addAuthorRouter);
+app.use('/updatebook', updateBookRouter);
+app.use('/deletebook', deleteBookRouter);
+app.use('/updateauthor', updateAuthorRouter);
+app.use('/deleteauthor', deleteAuthorRouter);
 
 function verifyToken(req, res, next) {
 

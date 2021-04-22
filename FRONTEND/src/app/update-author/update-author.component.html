@@ -13,14 +13,10 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" routerLink="/books" *ngIf="_auth.loggedIn()">Books</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link active" routerLink="/authors" *ngIf="_auth.loggedIn()">Authors</a>
                 </li>
-
                 <li class="nav-item">
-                    <a class="nav-link active" routerLink="/add-author" *ngIf="_auth.loggedIn()&& _auth.getToken() == 'admin'">Add Author</a>
+                    <a class="nav-link active" routerLink="/books" *ngIf="_auth.loggedIn()&& _auth.getToken() == 'admin'">Books</a>
                 </li>
 
                 <li class="nav-item">
@@ -36,6 +32,7 @@
 
 <h1 *ngIf="_auth.loggedIn()&& _auth.getToken() == 'admin'">Administrator</h1>
 
+
 <div class="container">
     <div class="row">
 
@@ -48,39 +45,41 @@
                         <div class="col-lg-4"></div>
                         <div class="col-lg-3">
                             <div class="card-header">
-                                <h1 id="sign-in">Add Book</h1>
+                                <h1 id="sign-in">Update Author</h1>
                             </div>
 
                             <div class="card-body">
-                                <form class="form-margin" [formGroup]="addBookForm" (ngSubmit)="addBook()">
+                                <form class="form-margin">
 
 
-                                    <div class="form-group">
-                                        <label>Book Name<span class="text-danger">*</span></label>
-                                        <label for="error" id="errorcatno"></label>
-                                        <input type="text" class="form-control" id="bookName" name="bookName" formControlName="bookName" [(ngModel)]="newBook.bookName" required>
-                                    </div>
+
                                     <div class="form-group">
                                         <br>
                                         <label>Author Name<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="authorName" name="authorName" formControlName="authorName" [(ngModel)]="newBook.authorName" required>
+                                        <input type="text" class="form-control" id="authorName" name="authorName" [(ngModel)]="updatedAuthor.authorName" required>
                                         <label class="error" for="error" id="errorcatname"></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Best Book Name<span class="text-danger">*</span></label>
+                                        <label for="error" id="errorcatno"></label>
+                                        <input type="text" class="form-control" id="bestbookName" name="bestbookName" [(ngModel)]="updatedAuthor.bestbookName" required>
                                     </div>
                                     <div class="form-group">
                                         <br>
                                         <label>Genre<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="genre" name="genre" formControlName="genre" [(ngModel)]="newBook.genre" required>
+                                        <input type="text" class="form-control" id="genre" name="genre" [(ngModel)]="updatedAuthor.genre" required>
                                         <label class="error" for="error" id="errorcatname"></label>
                                     </div>
                                     <div class="form-group">
                                         <label for="image">Image link<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="image" name="image" formControlName="image" [(ngModel)]="newBook.image" required>
+
+                                        <input type="text" class="form-control" id="image" name="image" [(ngModel)]="updatedAuthor.image" required>
 
                                     </div>
 
 
 
-                                    <button class="btn btn-primary btn-block btnsubmit" [disabled]="addBookForm.invalid">Add Book</button>
+                                    <button class="btn btn-primary btn-block btnsubmit" [disabled]="!updatedAuthor.authorName || !updatedAuthor.bestbookName ||  !updatedAuthor.genre || !updatedAuthor.image " (click)="updateAuthor(updatedAuthor.authorName,updatedAuthor.bestbookName,updatedAuthor.genre,updatedAuthor.image)">Update Author</button>
 
                                     <br>
                                     <br>

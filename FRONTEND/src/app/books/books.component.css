@@ -8,7 +8,8 @@ a {
     color: antiquewhite !important;
 }
 
-h1 {
+h1,
+h2 {
     color: rgb(34, 40, 124);
     text-align: left;
     margin-top: 5%;
@@ -28,4 +29,8 @@ label {
 
 small {
     color: black;
+}
+
+#welcome {
+    text-align: center;
 }
